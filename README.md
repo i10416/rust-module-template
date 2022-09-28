@@ -42,5 +42,13 @@ cargo run -p app_http_api
 cargo run -p app_grpc_api
 ```
 
+## build module
+
+```sh
+cargo build -p app_cli
+cargo build -p app_http_api
+cargo build -p app_grpc_api
+```
+
 
 
