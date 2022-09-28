@@ -1,0 +1,31 @@
+[package]
+name = "app"
+version = "0.1.0"
+edition = "2021"
+description = "My general purpose rust project template"
+authors = ["i10416"]
+homepage = "https://github.com/i10416/nope"
+repository = "https://github.com/i10416/nope"
+license = "MIT OR Apache-2.0"
+
+[workspace]
+
+members = [
+  "app_core",
+  "app_http_api",
+  "app_grpc_api",
+  "app_cli",
+  "app_macros"
+]
+
+# See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
+
+[dependencies]
+
+
+
+[profile.dev]
+opt-level = 0
+
+[profile.release]
+opt-level = 3

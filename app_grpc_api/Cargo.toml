@@ -1,0 +1,9 @@
+[package]
+name = "app_grpc_api"
+version = "0.1.0"
+edition = "2021"
+
+[dependencies]
+app_core = { path = "../app_core" }
+tokio = { version = "1", features = ["full"] }
+tonic = "0.8.2"
