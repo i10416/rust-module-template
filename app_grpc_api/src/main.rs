@@ -1,8 +1,8 @@
 mod gen;
 use gen::hello::HelloReply;
-use tonic::{Response, Status,transport::Server};
+use tonic::{transport::Server, Response, Status};
 
-use gen::hello::greeter_server::{Greeter,GreeterServer};
+use gen::hello::greeter_server::{Greeter, GreeterServer};
 
 #[tokio::main]
 async fn main() -> Result<(), Box<dyn std::error::Error>> {
