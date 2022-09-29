@@ -1,5 +1,3 @@
-
-
 // #[deprecated(since = "0.1.0", note = "use ??? instead.")]
 pub fn foo() -> &'static str {
     "hello! This is foo!"
@@ -13,4 +11,3 @@ mod tests {
         assert_eq!(result, 4);
     }
 }
-
