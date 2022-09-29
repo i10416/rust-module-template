@@ -1,0 +1,50 @@
+name: ci
+
+on:
+  push:
+    tags:
+      - 'v*'
+  pull_request:
+    branches: [master, main]
+    types:
+      - opened
+      - synchronize
+      - reopened
+      - closed
+    paths-ignore:
+      - '**.md'
+jobs:
+  check:
+    runs-on: ubuntu-latest
+    steps:
+      - name: checkout
+        uses: actions/checkout@v3
+        with:
+          fetch-depth: 0
+      - name: setup cache
+        uses: actions/cache@v2
+        with:
+          path: |
+            ~/.cargo/registry
+            ~/.cargo/git
+            target
+          key: ${{ runner.os }}-cargo-${{ hashFiles('**/Cargo.lock') }}
+      - name: setup rust
+        uses: actions-rs/toolchain@v1
+        with:
+          toolchain: stable
+          target: x86_64-unknown-linux-gnu
+          components: rustfmt, clippy
+          override: true
+      - name: check
+        run: |
+          cargo check
+          cargo fmt --check
+          cargo test -p app_core
+  task_on_merge:
+    runs-on: ubuntu-latest
+    needs: check
+    if: github.event.pull_request.merged
+    steps:
+      - name: nope
+        run: echo 'nope'
